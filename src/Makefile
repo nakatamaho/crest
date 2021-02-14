@@ -2,7 +2,7 @@ PROG = crest
 
 OBJDIR = build
 #--------------------------------------------------------------------------
- OSTYPE=LINUXI
+ OSTYPE=LINUXG
  #MKLROOT=/opt/intel/mkl
 #--------------------------------------------------------------------------
 
@@ -132,8 +132,9 @@ ifeq ($(OSTYPE),LINUXG)
   LINKER := gfortran -static-libgfortran -fopenmp 
   LIBS :=
   PREFLAG :=
-  FFLAGS :=  -J$(MODDIR)
-  CCFLAGS := -O -DLINUX
+  MODDIR := $(OBJDIR)
+  FFLAGS :=  -J$(MODDIR) -fopenmp -ffree-line-length-0
+  CCFLAGS := -O2 -DLINUX
 endif
 
 
